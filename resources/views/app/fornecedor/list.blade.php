@@ -41,7 +41,6 @@
                 </table>
 
                 {{ $fornecedores->appends($request)->links() }}
-                {{ print_r($request) }}
             </div>
         </div>
     </div>
