@@ -8,7 +8,7 @@ use App\Http\Middleware\LogAcessoMiddleware;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\appController;
 use App\Http\Controllers\clienteController;
-use App\Http\Controllers\productController;
+use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\fornecdorController;
 
 Route::get('/', [homeController::class, 'index'])->name('site.index');
@@ -30,9 +30,10 @@ Route::prefix('/app')->middleware('auth.rotas:padrão')->group(function () {
     Route::get('/fornecedor/adicionar', [fornecdorController::class, 'adicionar'])->name('site.fornecedor.adicionar');
     Route::post('/fornecedor/adicionar', [fornecdorController::class, 'adicionar'])->name('site.fornecedor.adicionar');
     Route::get('/fornecedor/editar/{id}/{msg?}', [fornecdorController::class, 'edit'])->name('site.fornecedor.editar');
+    Route::get('/fornecedor/excluir/{id}', [fornecdorController::class, 'excluir'])->name('site.fornecedor.excluir');
 
 
-    Route::get('/produto', [productController::class, 'index'])->name('site.produto');
+    Route::resource('/produto', ProdutoController::class);
 });
 
 
